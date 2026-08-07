@@ -1,0 +1,32 @@
+name: Sync from Gitee
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-from-gitee
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch Gitee repository
+        env:
+          GITEE_REPOSITORY: https://gitee.com/he-lizi_admin/multi-agent-life-cycle-runtime.git
+        run: |
+          git clone --bare "$GITEE_REPOSITORY" repository.git
+
+      - name: Push branches and tags to GitHub
+        working-directory: repository.git
+        env:
+          GITHUB_REPOSITORY_URL: https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git
+        run: |
+          git remote add github "$GITHUB_REPOSITORY_URL"
+          git push --force github 'refs/heads/*:refs/heads/*'
+          git push --force github 'refs/tags/*:refs/tags/*'
