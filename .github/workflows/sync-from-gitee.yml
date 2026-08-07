@@ -19,8 +19,15 @@ jobs:
       - name: Fetch Gitee repository
         env:
           GITEE_REPOSITORY: https://gitee.com/he-lizi_admin/multi-agent-life-cycle-runtime.git
+          GITEE_USERNAME: ${{ secrets.GITEE_USERNAME }}
+          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
         run: |
-          git clone --bare "$GITEE_REPOSITORY" repository.git
+          if [ -n "$GITEE_USERNAME" ] && [ -n "$GITEE_TOKEN" ]; then
+            GITEE_AUTH_REPOSITORY="https://${GITEE_USERNAME}:${GITEE_TOKEN}@gitee.com/he-lizi_admin/multi-agent-life-cycle-runtime.git"
+          else
+            GITEE_AUTH_REPOSITORY="$GITEE_REPOSITORY"
+          fi
+          git clone --bare "$GITEE_AUTH_REPOSITORY" repository.git
 
       - name: Push branches and tags to GitHub
         working-directory: repository.git
