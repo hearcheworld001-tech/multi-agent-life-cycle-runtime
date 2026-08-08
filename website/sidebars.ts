@@ -1,0 +1,30 @@
+import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
+
+const sidebars: SidebarsConfig = {
+  designSidebar: [
+    'intro',
+    {
+      type: 'category',
+      label: '从这里开始',
+      items: ['guide/overview', 'guide/glossary'],
+    },
+    {
+      type: 'category',
+      label: '核心设计',
+      items: [
+        'guide/lifecycle',
+        'guide/runtime',
+        'guide/memory',
+        'guide/recovery-evolution',
+        'guide/society',
+      ],
+    },
+    {
+      type: 'category',
+      label: '工程落地',
+      items: ['guide/contracts', 'guide/roadmap', 'guide/operations', 'guide/faq'],
+    },
+  ],
+};
+
+export default sidebars;

@@ -26,7 +26,7 @@
 
 当前仓库处于**架构设计阶段**。
 
-- 已完成：核心问题定义、Agent/Engine 边界、生命周期、记忆、恢复、演化和协作的设计文档；VitePress 文档站；Cloudflare Pages 发布配置。
+- 已完成：核心问题定义、Agent/Engine 边界、生命周期、记忆、恢复、演化和协作的设计文档；Docusaurus 多版本文档站；Cloudflare Pages 发布配置。
 - 未完成：运行时核心代码、持久化实现、消息协议实现、生产级安全模型和完整测试套件。
 - 文档约定：使用“必须”表示设计约束，使用“应”表示推荐行为，使用“可以”表示可选方案；“当前”只描述仓库已经存在的事实。
 
@@ -120,13 +120,13 @@ npm run docs:build
 npm run docs:preview
 ```
 
-Cloudflare Pages 使用以下配置：
+Cloudflare Pages 使用以下配置（根目录设为 `website`）：
 
 | 配置项 | 值 |
 | --- | --- |
 | 生产分支 | `master` |
-| 构建命令 | `npm run docs:build` |
-| 输出目录 | `docs/.vitepress/dist` |
+| 构建命令 | `npm run build` |
+| 输出目录 | `build` |
 | Node.js | 20 或更高 |
 
 线上文档站：[multi-agent-life-cycle-runtime.pages.dev](https://multi-agent-life-cycle-runtime.pages.dev/)。
