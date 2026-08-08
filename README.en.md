@@ -1,36 +1,48 @@
-# multi-agent life cycle runtime
+# Multi-Agent Life Cycle Runtime
 
-#### Description
-多智能体全生命周期运行时，用于管理智能体从创建、运行、评估到演化和退役的完整生命周期。
+Design documentation for a runtime that supports long-lived agents.
 
-#### Software Architecture
-Software architecture description
+This project is not a one-shot task orchestration framework. It explores how multiple agents can remain active in a controlled environment, observe the world, retain experience, recover from failures, collaborate with other agents, and evolve within verifiable boundaries.
 
-#### Installation
+> **The Engine provides the life environment; the Agent produces the life behavior.**
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## Project status
 
-#### Instructions
+The repository is currently in the **architecture design phase**.
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+- Done: design documents covering the Agent/Engine boundary, lifecycle, memory, recovery, evolution, collaboration, and a VitePress documentation site.
+- Not done: the runtime implementation, persistence adapters, production messaging protocols, production security model, and complete test suite.
+- Documentation convention: “must” means a design constraint, “should” means a recommendation, and “may” means an option. “Current” refers only to facts that already exist in the repository.
 
-#### Contribution
+The names of interfaces, states, and modules in the documents are design candidates until an implementation and tests are committed.
 
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
+## Reading guide
 
+The full, maintained documentation is currently written in Chinese:
 
-#### Gitee Feature
+- [Overall overview](docs/guide/overview.md)
+- [Agent lifecycle](docs/guide/lifecycle.md)
+- [Runtime architecture](docs/guide/runtime.md)
+- [Memory architecture](docs/guide/memory.md)
+- [Recovery and evolution](docs/guide/recovery-evolution.md)
+- [Multi-agent collaboration](docs/guide/society.md)
+- [Core contracts](docs/guide/contracts.md)
+- [Roadmap](docs/guide/roadmap.md)
+- [Operations](docs/guide/operations.md)
+- [Glossary](docs/guide/glossary.md)
+- [FAQ](docs/guide/faq.md)
 
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+## Local preview
+
+```bash
+npm install
+npm run docs:dev
+```
+
+Build the static site with:
+
+```bash
+npm run docs:build
+```
+
+Cloudflare Pages uses `npm run docs:build` and publishes `docs/.vitepress/dist`.
